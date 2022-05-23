@@ -1,0 +1,41 @@
+{{define "main"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{.Title}}</title>
+</head>
+
+<body>
+    <h1>{{.Title}}</h1>
+    <div>
+        <div>Vpn UP : {{.Status}}</div>
+        <div>IP : {{.Ip.Query}}</div>
+        <div>Location : {{.Ip.Country}}</div>
+    </div>
+    <div>
+        <h2>Processus</h2>
+        <ul>
+            {{range .ProcessList}}
+            <li>{{.Name}} - {{.Status}}</li>
+            {{end}}
+        </ul>
+
+    </div>
+
+
+    <div>
+        <h2>OpenVPN conf pool</h2>
+        <ul>
+            {{range .Location.Available}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+
+    </div>
+    
+</body>
+
+</html>
+{{end}}
