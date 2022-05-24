@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ master, feature/ci ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
 
@@ -21,6 +19,6 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag chrislrx/ovpnproxy:$(date +%s)
     - name: Push the Docker image
-      run: docker push my-image-name:$(date +%s)
+      run: docker push chrislrx/ovpnproxy:$(date +%s)
