@@ -1,8 +1,11 @@
 name: Docker Image CI
 
+
 on:
   push:
-    branches: [ master, feature/ci ]
+    # Pattern matched against refs/tags
+    tags:        
+      - '*' 
 
 jobs:
 
@@ -31,8 +34,4 @@ jobs:
         context: .
         push: true
         tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag chrislrx/ovpnproxy:$(date +%s)
-    # - name: Push the Docker image
-    #   run: docker push chrislrx/ovpnproxy:$(date +%s)
+        # labels: ${{ steps.meta.outputs.labels }}
